@@ -1,0 +1,104 @@
+<head>
+    <style>
+        ing:hover {
+            cursor: pointer;
+        }
+
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+
+    <script>
+        var video;
+        window.onload = function () {
+            video = document.getElementById("sampleVideo");
+        }
+
+        function play() {
+            video.play();
+        }
+
+        function pause() {
+            video.pause();
+        }
+
+        function back() {
+            video.currentTime -= 10;
+        }
+
+        window.onload = function() {
+            var drawingSurface = document.getElementById("drawingSurface");
+            var ctxt =drawingSurface.getContext("2d");
+        }
+    </script>
+</head>
+
+<body>
+        <table>
+            <tr>
+                <td>
+                    <video height="400" width="600" id="sampleVideo">
+                        <source src="samplevideo.mp4" type="audio/mp4" />
+                    </video>
+                </td>
+                <td>    
+                    <img id="backButton" src="backword.png" onclick="back()";/><br/>
+                    <img id="playButton" src="forward.png" onclick="back()";/><br/>
+                    <img id="PauseButton" src="pause.png" onclick="back()";/><br/>
+                </td>
+            </tr>
+        </table>
+
+        <audio controls>
+            <source src="sample.mp3" type="audio/mp3"/>
+            <source src="sample.ogg" type="audio/ogg"/>
+            <p>Your browser does not support HTML5 audio</p>
+        </audio>
+
+        <canvas id="drawingSurface" width="600" height="400"> 
+            Your browser does not support HTML5.
+        </canvas>
+
+        
+        ctxt.beginPath();
+        ctxt.moveTo(10, 10);
+        ctxt.lineTo(225, 350);
+        ctxt.lineTo(300, 10);
+        ctxt.lineTo(400, 350);
+        ctxt.lineWidth = 5;
+        ctxt.strokeStyle = '#0f0';
+        ctxt.stroke(); 
+
+        cxtx.beginPath();
+        cxtx.arc(150, 100, 75, 0, 2 * Math.PI, false);
+        cxtx.lineWidth = 25;
+        cxtx.strokeStyle = '#0f0';
+        cxtx.stroke();
+
+        cxtx.beginPath();
+        cxtx.arc(450, 100, 75, 1.5 * Math.PI, 2 *Math.PI, false);
+        cxtx.lineWidth = 25;
+        cxtx.strokeStyle = 'blue';
+        cxtx.stroke();
+
+        cxtx.beginPath();
+        cxtx.arc(150, 300, 75, 1 * Math.PI, 1.5 * Math.PI,  false);
+        cxtx.lineWidth = 25;
+        cxtx.strokeStyle = '#0ff';
+        cxtx.stroke();
+
+        cxtx.beginPath();
+        cxtx.arc(450, 300, 75, .5 * Math.PI, 1 *math.PI false);
+        cxtx.lineWidth = 25;
+        cxtx.strokeStyle = '#f00';
+        cxtx.stroke();
+
+        cxtx.beginPath();
+        cxtx.moveTo(10, 380);
+        cxtx.quadraticCurveTo(300, -250, 580, 380);
+        cxtx.lineWidth = 25;
+        cxtx.strokeStyle = '#f00';
+        cxtx.stroke();
+
+</body>
