@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lnag="en" xmlns="http://www.w3.org/1999/xhtml"> 
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <style></style>
+
+        <script>
+            window.onload = function () {
+                document.getElementById("btnHideAnElement").onclick = function () {
+                    if (document.getElementById("innerDiv").style.display == 'inline') {
+                        document.getElementById("innerDiv").style.display = 'none';
+                    }
+                    else {
+                        document.getElementById("innerDiv").style.display = 'inline';
+                    }
+                }
+            }
+        </script>
+... 
+            <button type="button" id="btnHideAnElement">Show/Hide Element</button>
+        </form>
+    </body>
+</html>
