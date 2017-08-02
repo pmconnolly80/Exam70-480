@@ -1,0 +1,60 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>  
+        <meta charset="utf-8"/>
+        <style> 
+            div {
+                width: 100px;
+                height: 100px;
+                border: 1px solid black;
+            }
+        </style>
+        <script>
+            var globalVar = "global";
+            window.onload = function () {
+                var localVar = "local";
+                document.getElementById("Div1").onclick = function() {
+                    var insideDiv1Click = "insideDiv1";
+                    alert(globalvar);
+                    alert(localvar);
+                    alert(insideDiv1Click);
+                };
+                document.getElementById("Div1").onclick = function() {
+                    alert(globalvar);
+                    alert(localvar);
+                    alert(insideDiv1Click); //gives an undefined exception.  variable isn't in scope.
+                };
+                document.getElementById("Div1").onclick = function() {
+                    var insideDiv3 = "Div3";
+                    AFunction();
+                    BFunctionWithParam(insideDiv3);
+                };
+                function AFunction () {
+                    var x;
+                    alert(insideDiv3);
+                }
+                function BFunctionWitParam(p){
+                    alert(p);
+                    alert(localVar);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="Div1"></div>
+        <div id="Div2"></div>
+        <div id="Div3"></div>
+    </body>
+</html>
+
+
+//Leveraging 'this'
+<script>
+    //Here, "this" refernces the global namespace this.navigator.geolocation
+    window.onload = function () {
+    //Here, "this" references the window object this...
+    document.getElementById("aDiv").onclic = function()
+        {
+            //Here, "this" references the DIV element
+        } 
+    }
+</script>
