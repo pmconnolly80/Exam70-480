@@ -1,0 +1,17 @@
+1.  When is a for loop better than a while loop?
+
+    A.  For Loop   -    When you know how many times an loop must run.
+
+        While Loop -    When you DON'T know the amount times it should run.  
+                        Loop runs until the logic with in the loop acheives a certain state.  
+                        They require extra variables and code added to the loop to take care of the counting.
+                        Evaluates to a Boolean expression.
+
+2.  When is a if statement better than a switch statement?
+
+    A.  If         -    If statement can NOT easily replace a switch statement.
+                        Checking single values for equality can be long and cumbersome.
+                        The allow for more complex evaulations. (AND and OR logic).
+
+        Switch     -    More useful for evaluating a single value against a long list of possible values
+                        such as enumeration.       

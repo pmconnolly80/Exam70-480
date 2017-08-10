@@ -19,7 +19,6 @@
         var afterRemove = document.getElementById("innerDiv");
         alert(afterRemove);
 
-
         var element = document.createElement("article");
         element.innerText = "My new <article> element";
 
@@ -46,9 +45,15 @@
         var innerDiv = document.getElementById("innerDiv");
         innerDiv.removeNode(true);
 
-
-
-
+        var innerDiv = document.getElementById("innerDiv");
+        var newDiv = document.createElement("div");
+        for (var i=0; innerDiv.childNodes.length; i++) {
+            var anchor = newDiv.appendChild(document.createElement("a"));
+            anchor.setAttribute("href", "http://www.bing.ca");
+            anchor.text = innerDiv.childNodes[i].textContent;
+            newDiv.appendChild(document.createElement("br"));
+        }
+        innerDiv.replaceNode(newDiv);
     }
 </script>
 </head>

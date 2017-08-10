@@ -1,0 +1,38 @@
+<html manifest="webApp.appcache">
+
+</html>
+
+---------------------
+Typical Manifest File
+---------------------
+CACHE Manifest
+# My Web Application Cache Manifest
+# v.1.0.0.25
+#
+#Cache Section. All Cached items.
+CACHE
+/pages/page1.html
+/pages/page2.html
+
+#Required network resources
+NETWORK:
+login.html
+
+#Fallback items.
+FALLBACK:
+login.html 
+fallback-login.html
+--General Redirect---
+/resources/resource.jpg
+
+
+----------------------
+Using the AppCache API
+----------------------
+
+window.onload = function() {
+    var appCache = window.applicationCache;
+    appCache.oncached = function (e) {alert("cache successfully downloaded.");};
+    appCache.onupdateready = function(e) {appCache.swapCache();};
+}
+
