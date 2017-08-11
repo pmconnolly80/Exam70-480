@@ -1,0 +1,399 @@
+// Using events 
+
+//  Event objects
+var evnt = window.event;
+
+//Declarative event handling
+<html>
+    <head>
+        <script>    
+            function onloadHandler() {
+                alert("hello event");
+            }
+        </script>
+    </head>
+    <body onload="onloadHandler"();>
+       ... 
+    </body>
+</html>
+
+//Assignment even handling
+<html>
+    <head>
+        <script>
+            window.onload = onloadHandler();
+
+            function onloadHandler() {
+                alert("hello event.")
+            }
+        </script>
+    </head>
+    <body>
+        ...
+    </body>
+</html>
+
+//Using the addEventListener and removeEventListener methods
+
+Structure:
+    addEventLsitener(<event name>, <event function>, <optional cascade rules>)
+
+//addEventListener
+    <script>
+        window.addEventListener("load", onloadHandler, false);
+        window.addEventListener("load", onloadHandler2, false);
+        window.addEventListener("load", onloadHandler3, false);
+
+        function onloadHandler() {
+            alert("hello event 1.");
+        }
+        
+        function onloadHandler() {
+            alert("hello event 2.");
+        }
+
+        function onloadHandler() {
+            alert("hello event 3.");
+        }  
+    </script>
+
+//removeEventListener
+        <script>
+            window.removeEventListener("load", onloadHandler, false);
+            window.removeEventListener("load", onloadHandler2, false);
+            window.removeEventListener("load", onloadHandler3, false);
+
+            function onloadHandler() {
+                alert("hello event 1.");
+            }
+            
+            function onloadHandler() {
+                alert("hello event 2.");
+            }
+
+            function onloadHandler() {
+                alert("hello event 3.");
+            }  
+        </script>
+
+    //Using anonymous function    
+        <script>
+            window.onload = function () {}
+                // No function name and can't be called by any other code.
+
+            window.addEventListener("load",
+            function () {
+                document.getElementById("outer").addEventListener("click", ouerDivClick, false);},
+            false);
+                //
+
+            window.removeEventListener("load",
+            function () {
+                document.getElementById("outer").addEventListener("click", ouerDivClick, false);},
+            false);
+                //
+        </script>
+
+    //Canceling and event
+        <script>
+            window.onload = function() {
+                var a = document.getElementById("aLink");
+                a.onclick = OverrideAnchorClick;
+            }
+            function OverrideAnchorClick() {
+                //do custom logic for the anchor
+                window.event.returnValue = false;
+                //or
+                //return false
+            }
+        </script>
+
+    //Declaring and handling bubbled events
+
+        <style>
+            #outer {
+                width: 200px;
+                height: 200px;
+                background-color: red;
+            }
+            #middle {
+                width: 50%;
+                height: 50%;
+                position: relative;
+                top: 25%;
+                bottom: 25%;
+                background-color: green;
+            }
+            #inner {
+                width: 50%;
+                height: 50%;
+                position: relative;
+                top: 25%;
+                bottom: 25%;
+                background-color: blue;
+            }
+        </style>
+        <script>    
+            window.onload = function () {
+                document.getElementById("outer").addEventListener("click", outerDivClick, false);
+                document.getElementById("middle").addEventListener("click", middleDivClick, false);
+                document.getElementById("inner").addEventListener("click", innerDivClick, false);
+                document.getElementById("clearButton").addEventListener("click", clearList);
+            }
+            function outDivClick() {
+                appendText("outer Div Clicked");
+            }
+            function middleDivClick() {
+                appendText("middle Div Clicked");
+            }
+            function innerDivClick() {
+                appendText("inner Div Clicked");
+            }
+            function appendText() {
+                var li = document.createElement("li");
+                li.innertext = s;
+                document.getElementById("eventOrder").appendChild(li);
+            }
+            function appendText() {
+                var ol = document.createElement("ol");
+                ol.id = "eventOrder";
+                document.getElementById("bod").replaceChild(ol, document.getElementById("eventOrder"));
+            }
+
+            //cancelBubble
+            function innerDivClicked() {
+                appendText("Inner Div Clicked");
+                window.event.cancelBubble = true;
+            }
+        </script>
+
+//Handling DOM events
+    <script>
+        window.onload = function () {
+            document.getElementById("aRange").addEventListener("change", rangeChangeEvent);
+        }
+
+        function rangeChangeEvent() {
+            document.getElementById("rangeValue").innerText = this.value;
+        }
+    </script>
+    ...
+    <body>
+        <input id="aRange" type="range" max="200" min="0" value="0" />
+        <div id="rangeValue"></div>
+    </body>
+
+    //with text input control
+    <script>
+        window.onload = function () {
+            document.getElementById("aText").addEventListener("change", rangeChangeEvent);
+        }
+
+        function rangeChangeEvent() {
+            document.getElementById("rangeValue").innerText = this.value;
+        }
+    </script>
+    ...
+    <body>
+        <input id="aRange" type ="range" max="200" min="0" value="0" />
+        <input id="aText" type="text" />
+        <div id="rangeValue"></div>
+    </body>
+
+//Focus events
+
+        DOM focus events:
+            focus       -   Raised when the element recieves the focus.
+            blur        -   Raised when the element loses focus.
+            focusin     -   Raised just before an element recieves the focus.
+            focusout    -   Raised just before an element loses the focus.
+
+    <script>
+        window.onload = function() {
+            document.getElementById("FirstNameText").focus();
+            document.getElementById("firstNameText").addEventListener("blur", function() {
+                if (this.value.length < 5) {
+                    document.getElementById("ruleViolation").innerText = 'First name is required to be 5 letters.';
+                    document.getElementById("ruleViolation").style.color = 'red';
+                    this.focus();
+                }
+            });
+        }
+    </script>
+
+//Keyboard events
+
+            Available keyboard events:
+                keydown     -   Raised when the key is pushed down.
+                keyup       -   Raised when the key is released.
+                keypress    -   Raised when a key is completely pressed.
+
+            Event object properties for keyboard events:
+                altKey      -   A Boolean vlue to indicate wheather the Alt key was pressed.
+                keyCode     -   The numeric code for the key that was pressed.
+                ctrlKey     -   A Boolean value as to whether the Control key was pressed.
+                shiftKey    -   A Boolean value as to whether the Shift key was pressed.
+
+    <script>
+        document.getElementById("firstNameText").addEventListener("keydown", function() {
+            document.getElementById("outputText").innerText = window.event.keyCode;
+        });
+
+        document.onkeydown = function () {
+            if (window.event.ctrlKey && String.fromCharCode(window.event.keyCode) == 'F')
+            document.getElementById("firstNameText").focus();
+            if (window.event.ctrlKey && String.fromCharCode(window.event.keyCode) == 'L')
+            document.getElementById("lastNameText").focus();
+            return false;
+        }
+    </script>
+
+//Mouse events
+
+            Available mouse events:
+                click       -   Raised when the mouse preforms a click.
+                dbclick     -   Raised when the mouse performs a double click.
+                mousedown   -   Raised when the mouse button is pressed down..
+                mouseup     -   Raised when the mouse button is released.
+                mouseenter  -   Raised when the cursor enters an HTML element.
+                mouseover   -   Raised when the cursor enters an HTML element.
+                mouseleave  -   Raised the the mouse cursor leaves the space of an HTML element.
+                mousemove   -   Raised when the mouse cursor moves over an HTML element 
+
+            Properties of the mouse event:
+                clientX     -   The x or horizontal position of the mouse cursor relative to the viewport boundaries.
+                clientY     -   The y orverticle position of the mouse cursot relative to teh viewport boundaries.
+                offsetX     -   The x or horizontal position of the mouse cursor relative to the target element.
+                offsetY     -   The y or verticle position of the mouse cursor relative to the target element.
+                screenX     -   The x or horizontal position of the mouse cursor relative to the upper-left corner of the screen.
+                screenY     -   he y or verticle position of the mouse cursor realtive to the upper-left corner of the screen.
+
+    
+    <script>
+        window.onload = function() {
+            document.getElementById("yellowBox").addEventListener("click", yellowBoxClick);
+        }
+        function yellowBoxClick() {
+            document.write("Client X: " + window.event.clientX + " ClientY: " + window.event.clientY);
+            document.write("<BR />");
+            document.write("offsetX: " + window.event.offsetX + "offestY: " + window.event.offsetY);
+            document.write("<BR />");
+            document.write("screen X: " + window.event.screenX + "screenY: " + window.event.screenY);
+        }
+    </script>
+
+    <style>
+        .scale {
+            transform: scale(1.5);
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            document.getElementById("yellowBox").addEventListener("mouseenter", yellowBoxEnter);
+            document.getElementById("yellowBox").addEventListener("mouseleave", yellowBoxLeave);
+        }
+        function yellowBoxEnter() {
+            this.classList.add("scale");
+        }
+        function yellowBoxLeave() {
+            this.classList.remove("scale");
+        }
+    </script>
+    <body>
+        <div id="yellowBox" style="width: 50%; height: 50%; margin: 0 auto;
+        background-color: yellow;"></div>
+    </body>
+
+//Drag-and-drop functionality
+
+            Events available to drag and drop:
+                drag        -   Raised continuously while the element is being dragged.
+                dragend     -   Raised on the element being dragged when the mouse is released to end the drop operation.
+                dragenter   -   Raised on a target element when a dragged element is dragged into its space.
+                dragleave   -   Raised on a target element leaves its space.
+                dragover    -   Raised continuously on the target element while the dragged element is being dragged over it.
+                dragstart   -   Raised on the element being dragged when the drag operation is begining.
+                drop        -   Raised on the target element when the dragged element is raised.
+
+    <head>
+        <style>
+            .dropped {
+                width: 50%;
+                height: 50%;
+                position: relative;
+                top: 25%;
+                left: 25%;
+                background-color: black;
+            }
+            .over {
+                transform: scale(1.1);
+            }
+            .bucket {
+                width: 100px;
+                height: 100px;
+                margin: 10px 10px 10px 10px;
+                position: absolute;
+            }
+            .chip {
+                width: 20px;
+                height: 20px;
+                position: absolute;
+            }
+            div:first-of-type {
+                background-color: red;
+            }
+            div:nth-of-type(2) {    
+                background-color: green;
+                left: 25%;
+            }
+            div:nth-of-type(3) {    
+                background-color: blue;
+                left: 50%;
+            }
+            #chip {
+                background-color: black;
+                width: 50px;
+                height: 50px;
+            }
+            .begin {
+                position: absolute;
+                left: 150px;
+                top: 150px;
+            }
+        </style>
+    </head> 
+    <body>
+        <div id="bucket1" class="bucket"></div>
+        <div id="bucket2" class="bucket"></div>
+        <div id="bucket3" class="bucket"></div>
+        <div id="chip" draggable="true" class="chip"></div>
+    </body>          
+
+        //Begin the drag event
+            <script>
+                var chip = document.getElementById("chip");
+                chip.addEventListener("dragstart", function() {
+                    window.event.dataTransfer.setData("Text", this.id);
+                });
+
+                //target elements event listeners
+                var b1 = document.getElementById("bucket1");
+                b1.addEventListener("dragenter", function() {
+                    b1.classList.add("over");
+                    window.element.returnValue = false;
+                });
+                b1.addEventListener("dragleave", function() {
+                    b1.classList.remove("over");
+                });
+                b1.addEventListener("dragover", function() {
+                    b1.classList.returnValue = false;
+                });
+                b1.addEventListener("drop", function() {
+                    b1.classList.returnValue = false;
+                    var data = event.dataTranfer.getData("Text");
+                    var d = document.getElementById(data);
+                    d.classList.remove("begin");
+                    d.className.add("dropped");
+                    this.apppendChild(d);
+                });
+            </script>

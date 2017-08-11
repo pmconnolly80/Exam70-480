@@ -24,7 +24,7 @@ var anArray = new Array(5);
 alert(anArray.length);
 
 //Using the concat method
-var sports = new Array('football', 'cricket', 'rugby', 'tennis', 'barminton');
+var sports = new Array('football', 'cricket', 'rugby', 'tennis', 'badminton');
 var moreSports = new Array('soccer', 'basketball', 'hockey');
 var combinedSports = sports.concat(moreSports);
 
