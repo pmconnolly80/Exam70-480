@@ -1,0 +1,93 @@
+// Using the XMLHttpRequest object
+
+    // Available events of the XMLHttpRequest object
+        Onreadystateexchange    -   Sets an event handler for when the state of the request has changed.
+                                    Used for asychronous calls.
+        Ontimeout               -   Sets an event handler for when the request can't be completed.
+        Abort                   -   Cancels the current request.
+        getAllResponseHeaders   -   Gives a complete list of response headers.
+        getResponseHeader       -   Returns the specific response header
+        Send                    -   Makes the HTTP request and recieves the response.
+        setRequestHeader        -   Adds custome HTTP header to the request.
+        Open                    -   Set properties for the request such as the URL, a user name, and a password.
+
+    // Available properties of the XMLHttpRequest object
+        readyState              -   Gets the current state of the object.
+        Response                -   Gets the response returned from the server.
+        responeBody             -   Gets the response body as an arry of bytes.
+        responseText            -   Gets the response body as a string.
+        responseType            -   Gets the data type associated with the response, such as blob, text, array-buffer, or document.
+        responseXML             -   Gets the reponse body as an XML DOM object.
+        Status                  -   Gets the HTTP status code of the request.
+        statusText              -   Gets the friendly HTTP text that corresponds with the status.
+        Timeout                 -   Sets the timeout threshold on the request.
+        withCredentials         -   Specifies whether the request should include user credentials.
+
+//A request to the server using XMLHttpRequest
+<script>
+    $("document").ready(function() {
+        $("btnGetXMLData").click(function() {
+            var xReq = new XMLHttpRequest();
+            xReq.open("GET", "myXMLData.xml", false);
+            xReq.timeout = 2000;
+            xReq.ontimeout = function() {
+                $("#results".rtext("Request Times out"))
+            }
+            xReq.send(null);
+            $("#results").text(xReq.response);
+        });
+    });
+</script>
+
+//Parameters for the XMLHttpRequest open method
+    Method      -   The HTTPmethod being used for the request: GET, POST, etc.
+    URL         -   The URL to make the request to.
+    async       -   A Boolean value to indicte whether the call should be made asynchronously.  
+                    If true, an event handler needs to be set for the onreadystatechanged.
+    User name   -   A user name is the destination requires credentials.
+    Password    -   A password in the destination requires credentials.
+
+
+//XML Asynchronous call
+<script>
+    var XMLHTTPReadyState_COMPLETE = 4;
+
+    var xReq = new XMLHttpRequest();
+    xReq.open("GET", "myXMLData.xml", true);
+    xReq.timeout = 2000;
+    xReq.ontimeout = function() {
+        $("#results".rtext("Request Times out"))
+    }
+    xReq.onreadystatechange = function(e) {
+        if (xReq.readyState ==XMLHTTPReadyState_COMPLETE) {
+            if(xReq.status = "200") {
+                $('#results').text(xReq.response);
+            } else {
+                $("#results").text(xReq.statusText0);
+            }
+        }
+    }
+    xReq.send(null);
+</script>
+
+//JSON asychronous call
+<script>
+    var XMLHTTPReadyState_COMPLETE = 4;
+
+    var xReq = new XMLHttpRequest();
+    xReq.open("GET", "myJSONData.xml", true);
+    xReq.timeout = 2000;
+    xReq.ontimeout = function() {
+        $("#results".rtext("Request Times out"))
+    }
+    xReq.onreadystatechange = function(e) {
+        if (xReq.readyState ==XMLHTTPReadyState_COMPLETE) {
+            if(xReq.status = "200") {
+                $('#results').text(xReq.response);
+            } else {
+                $("#results").text(xReq.statusText0);
+            }
+        }
+    }
+    xReq.send(null);
+</script>

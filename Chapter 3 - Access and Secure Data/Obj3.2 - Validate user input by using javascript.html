@@ -1,0 +1,80 @@
+// Regular expression special chararcters
+^       -   The character denotes the begining of a string.
+$       -   The dollar sign denotes the end of a string.
+.       -   The period indicates to match on any chararcter.
+[A-Z]   -   Alphabet letters idicate to match any alphabetic character.
+            This is case-sensitive.  To math lowercase letters, use [a-z].
+\d      -   This combination indictes to match any numeric character.
++       -   The plus sign denotes that the preceding character or character set must match at least.
+*       -   The asterick denotes that the preceding character or character set might or might not match.
+            This generates zero or more matches.
+[^]     -   When included in a character set, the caret denotes anegation. 
+            [^a] would match a string that doesn't have an 'a' in it.
+?       -   The question mark denotes theat the preceding character is optional.
+\w      -   This combination indicates to match a word character consisting of any alphanumeric character, including an underscore.
+\       -   The backslash is an escape character.  If and special character hould e included in the character set to match on literally,
+            it needs to be escaped with a \.  For example, to find a backslash in a string, the pattern would include \\.
+\s      -   This combination indicates to match on a space.
+            When it's combined with + or *, it can match on one or more spaces.
+
+ //Evaluating REGEX expressions in Javacript
+ <script type="text/javascript">
+    function CheckString() {
+        try {
+            var s = $('#regExString').val();
+            var regExpression = /^[A-Z,a-z]\d[A-Z.a-z][\s{1}]?\d[A-Z,a-z]\d/;
+            if (regExpression.test(s))
+                alert("Valid postal code");
+            else    
+                alert("Invalid postal code");
+        } catch(e) {
+            alert(e.message);
+        }
+    }
+ </script>
+ <body>
+     <form>
+         <input type="text" id="regString" />
+         <button onclick="CheckString();" >Evaluated</button>
+     </form>
+ </body>
+
+
+//Using method called exec.  Returns portion of the input string that matched the expression.
+ <script type="text/javascript">
+    function CheckStringExec() {
+        try {
+            var s = $('#regExString').val();
+            var regExpression = /^[A-Z,a-z]\d[A-Z.a-z][\s{1}]?\d[A-Z,a-z]\d/;
+            var results = regExpression.exec(s);
+            if (results != null)
+                alert("Valid postal code" + results[0]);
+            else    
+                alert("Invalid postal code");
+        } finally {}
+    } 
+ </script>
+ <body>
+     <form>
+         <input type="text" id="regString" />
+         <button onclick="CheckStringExec();" >Evaluate with Exec</button>
+     </form>
+ </body>
+
+ //Validating data with built-in functions
+ <script>
+    if (isNaN(value)) {
+        //handle the non number value
+    }
+    else {
+        //proceed with the number value
+    }
+ </script>
+
+//Using iFrames
+    //Available sandbox attribute values
+    ""                     - An empty string applies all restricitons. This is the most secure.
+    allow-same-origin      - iFrame content is treated as being from the same origin as the containing HTML document.
+    allow-top-navigation   - iFrame content can load content from the containing HTML document.
+    allow-forms            - iFrame can submit forms.
+    allow-scripts          - iFrame can run script.
