@@ -1,0 +1,190 @@
+Applying styles to alter appearance attributes
+
+    Altering size
+
+        table {
+            height: 50%;
+            width: 50%;
+        }
+
+        div {
+            width: 200px;
+            height:100px;
+        }
+
+    Bordering
+
+        p {
+            border-style: solid;
+            border-color: black;
+            border-spacing: 250px;
+            border-width: 5px;
+        }
+
+        OR 
+
+        p {
+            border: 5px solid black;
+        }
+
+
+        More granular control
+
+        p {
+            border-top: 15px solid black;
+            border-left: 10px solid black;
+            border-right: 10px solid black;
+            border-bottom: 5px solid black;
+        }
+    
+    Padding and Margin
+
+        p {
+            padding: 25px;
+            margin: 25px;
+        }
+
+        OR 
+
+        p {
+            padding: 25px 25px 25px 25px;
+            margin: 25px 25px 25px 25px;
+        }
+
+        OR 
+
+        p {
+            padding-top: 25px;
+            padding-bottom: 25px;
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+
+Applying styles to alter graphic effects
+
+    Applying transparency/opacity
+
+        p {
+            opacity: 0.4;
+        }
+
+
+    Applying background image
+
+        p {
+            background-image: url('orange.jpg');
+            color: white;
+        }
+
+            Configuration options for the background image
+                
+                size    - changes the dimensions of the image.
+                repeat  - Secifies whether the image should be repeated/tiled through the available spacee of the box.
+                clip    - Specifies whether the image should be clipped at a border.
+                position-x/position-y - specifies the origin position of the image whitin the box.
+
+        p {
+            background-image: url('orange.jpg');
+            background-size: 20px;
+            background-repeat: repeat;
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            color: white;
+        }
+
+    Applying gradients
+
+        p {
+            background: linear-gradient(black,gray);
+
+        }
+
+    Parameters for the linear-gradient function:
+
+        Direction       -   Specify the direction of the gradient as to left or right.This parameter is optional and
+                            the default when blank is an up/down gradient effect.  A diagonal effect can also be 
+                            applied by specifying to bottom right or to bottom left.  You may also specify an angle, as 
+                            in 100deg.
+
+        Color stop...n  -   The second and susequent parameters in the color to start with folloed by the 
+                            transitional colors known as the color stops.  This tells the browser what the color to start with 
+                            and transition into with the gradient effect.
+
+        div {
+            position: absolute;
+            left: 50px; top: 50px;
+            width: 100px;
+            height: 100px;
+            border: solid 1px black;
+            box-shadow: 10px 10px;
+        }
+
+    Text-shadow Parameters
+
+        h-shadow - Specifies the position of the shadow along the horizontal axis.  This value accepts negative numbers.
+        v-shadow - Specifies the position of the shadow along the vericle axis.  This value accepts negative numbers.
+        blur - Specifies the distance of the blur effect. This parameter is optional and defaults to 0.
+        color - Specifies the color of the shadow.
+
+        p {
+            position: absolute;
+            left: 250px;
+            top: 250px;
+            text-shadow: -10px -10px;
+        }
+
+    Apply clipping
+        img {
+            position: absolute;
+            clip: rect(25px, 50px, 50px, 25px)
+        }
+
+Apply styles to establish and change an element's position
+
+    img {
+        position: fixed;
+        left: 25px;
+        top: 25px;
+    }    
+
+    img:nth-child(1n+0) {
+        position: fixed;
+        left: -25px;
+        top: 25px;
+    }
+
+    img:nth-child(2) {
+        position: relative;
+        left: -25px;
+    }
+
+    img:nth-child(3) {
+        position: relative;
+        left: -50px;
+    }
+
+    img:nth-child(4) {
+        position: relative;
+        left: -75px;
+    }
+
+    Using absolute positioning of an image over a block of text.
+
+    img {
+        position: absolute;
+        left: 215px;
+        top: 100px;
+        height: 50px;
+        width: 50px;
+    }
+
+    Using the Float Property
+
+    img.flower {
+        float: left;
+        left: 215px;
+        top: 100px;
+        height: 50px;
+        width: 50px;
+    }
