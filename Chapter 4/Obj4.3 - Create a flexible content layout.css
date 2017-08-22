@@ -1,0 +1,48 @@
+Implement a layout using a flexible box model
+
+#flexbox1 {
+    display: flexbox;
+    border: 1px solid black;
+    margin-top: 100px;
+    min-height: 15px;
+}
+
+CSS styles available for a flexible box
+    flex-direction 
+        Column          - Flows the child elements of the flexbox across the vertical axis top to bottom.
+        row(default)    - Flows the child elements of the flexbox along the horizontal axis left to right.
+        column-reverse  - Renders the child elements along the vertical axis form the reverse end bottom to top.
+        row-reverse     - renders the child elements along the horizontal axis form the reverse end right to left.
+
+    flex-pack
+        End             - Renders the child elements from the end in relation to the layout axis set direction.
+        Start           - Renders the child elements from the start in relation to the layout axis set direction.
+        center          - Renders the child elements centered on the layout axis.
+        distribute      - Evenly spaces the child elements along the layout axis.
+
+#flexbox1 > div {
+    min-width: 80px;
+    min-height: 80px;
+    border: 1px solid black;
+    margin: 5px;
+}
+
+#flexbox1 > div:nth-child(1) {
+    background-color: green;
+}
+
+#flexbox1 > div:nth-child(2) {
+    background-color: yellow;
+}
+#flexbox1 > div:nth-child(3) {
+    background-color: red;
+}
+
+To reverse
+#flexbox1 {
+    display: flexbox;
+    flex-direction: row-reverse;
+    border: 1px solid black;
+    margin-top: 100px;
+    min-height: 15px;
+}
