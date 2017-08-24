@@ -46,3 +46,29 @@ To reverse
     margin-top: 100px;
     min-height: 15px;
 }
+
+
+Flex-Pack
+#flexbox1 {
+    display: flexbox;
+    flex-direction: row-reverse;
+    border: 1px solid black;
+    margin-top: 100px;
+    min-height: 15px;
+}
+
+Flew-Wrap
+#flexbox1 {
+    display: flexbox;
+    flex-flow: row;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    border: 1px solid black;
+    margin-top: 100px;
+    min-height: 15px;
+}
+
+
+
+
+

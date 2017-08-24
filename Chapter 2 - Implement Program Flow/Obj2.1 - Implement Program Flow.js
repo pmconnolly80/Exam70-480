@@ -58,7 +58,7 @@ switch (canvas.style.backgroundColor) {
         break;
 }
 
-//wants the same to happen with green and yello w
+//wants the same to happen with green and yellow
 switch (canvas.style.backgroundColor) {
     case 'yellow':
     case 'green':

@@ -92,6 +92,7 @@
 </body>
 
 
+//Provides for an events onopen and onerror
 <script>
     //event handler for when the WebSocket connection is established            
     wsConnection.onopen = function() {
@@ -102,5 +103,47 @@
         //write and error on the screen
         NewLine();
         chatBox.value = chatBox.value + "System: Error Occurred";
+    }
+</script>
+
+//These 2 mthods show the functions and events that handle bidirectional communitcation 
+<script>                    
+    ws.Connection.onmessage = function(msg) {
+        //write message
+        NewLine();
+        chatBox.value =chatBox.value + "You: " +msgTosend.value;
+    }
+    sendButton.onclick = function() {
+        //check the state of the connection
+        if(wsConnection.readyState == Websocket.OPEN) {
+            //send message to server
+            wxConnection.send(msgToSend.value);
+        }
+        else    
+            return;
+        //show message in chat window
+        NewLine();
+        chatBox.value = chatBox.value = "You: " + msgToSend.value;
+        //clear message text box
+        msgToSend.value = '';
+    }
+</script>
+
+// Possible values of the WebSocket readyState
+    OPEN        -   The connection is open.
+    CONNECTING  -   The connection is in the process of connecting and not ready for use yet. 
+                    This is the default value.
+    CLOSING     -   The connection is in the process of being closed.
+    CLOSED      -   The connection is closed.
+
+//Connectioin closed with no parameters
+<script>
+    disconnectButton.onclick = function(){
+        wsConnection.close();
+    }
+    wsConnection.onclose = function() {
+        //write the connectin has been closed.
+        NewLine();
+        chatBox.value = chatBox.value = "System:  Connection has been closed.";
     }
 </script>

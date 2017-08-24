@@ -1,0 +1,97 @@
+// Implementing a layout using multi-column
+
+<html> 
+    <head>
+        <style>
+            #c_lo {
+                width: 80%;
+                height: 400px;
+                border: 1px solid black;
+                column-count: 5;
+                column-rule-color: black;
+                column-rule-style: dashed;
+                column-rule-width: 2px;
+                column-gap: 5px;
+            }
+            hgroup {
+                column-span: all;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <article id="c_lo">
+            <<hgroup>
+                <h1>My Blog Article</h1>
+            </hgroup>
+            <p>
+                ...
+            </p>
+        </article>
+    </body>
+</html>
+
+// Multi-column properties
+    column-count        - Specifies the number of column.
+    column-gap          - Specifies the amount of space to place between columns.
+    column-rule-color   - Specifies the color of the verticle rule drawn between columns
+    column-rule-style   - Specifies the type of verticle rule to draw between columns, for example, solid or dashed line.
+    column-rule-width   - Specifies the width of the verticle rule drawn between the columns.
+    column-rule         - A shorthand way to specify the color, style, snd width of the verticle rule between the columns.
+    column-span         - Specidies how many columns the element should span across; possible values are a number of columns or all; the default value is 1.
+    column-width        - Specifies how wide the columns should be.
+    Columns             - A shorthand method to specifies the number of columns and their width.
+
+
+
+// Implementing a layout using position, floating, and exclusions
+
+// Values available for the wrap-flow property
+    auto - The is the defult value.  The exclusion item will be over the top of the inline element.
+    both - The exclusion will force the inline elememt to wrap smoothly on both sides.
+    start - The exclusion will force the inline elements to wrap only on the starting edge, and the ending edge will be empty.
+    end - The exclusion will force the inline eleenet to wrap only on theending edge, and the starting edge will be empty.
+    maximum - The exclusion will for the inline element to wraps only on the side with the largest available space.
+    clear - The exclusion will force the inline content to wrap only on the top and bottom nnd leave the start and end edges empty.
+
+//  Wrap-flow propoerty to both example
+<html> 
+    <head>
+        <style>
+            p {
+                width: 80%;
+                padding-left: 50px;
+            }
+            img {
+                position: absolute;
+                height: 100px;
+                width: 150px;
+                -ms-wrap-flow: both;
+                -ms-wrap-margin: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <p>
+            Lorem ipsum dolor sit amet, odio temporibus vix no, <img src="flowers.jpg" />per mollis nominavi scriptorem ne, duo ad velit persius cotidieque. His summo tantas ne. Inermis ponderum suscipiantur ea duo. Omnis augue voluptua mei cu, lucilius prodesset cu vix, eam no dico docendi dignissim. Velit dicant et cum. Pro denique constituto ex.
+        </p>
+    </body>
+</html>
+
+
+
+//  Implementing a layout using grid alignment
+
+
+//SHORTHAND
+<script>
+    #blogPage {
+        display: grid;
+        grid-column: 15% 1fr 25%;
+        grid-rows: (20%)[5];
+        width: 90%;
+        height: 95%;
+        border: 1px dotted black;
+        margin: auto;
+    }
+</script>

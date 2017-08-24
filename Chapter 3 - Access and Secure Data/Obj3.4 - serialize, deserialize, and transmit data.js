@@ -34,3 +34,47 @@ var xReq = new XMLHttpRequest();
 xReq.open("POST", "saveImage.aspx", false);
 xReq.responseType = 'blob';
 xReq.send(data);
+
+//Using the Form.Submit method
+<form id="signupForm" action="processSignUp.aspx">
+</form>
+
+//Javascript to handle form submission
+$("document").ready(function() {
+    $("form").submit(function() {
+    });
+});
+
+//AJAX call inside a click event
+$("form").submit(function() {
+
+    var fName = $("#firstName").val();
+    var lName = $("lastName").val();
+    var qString = "Last Name=" + lName + "&First Name=" + fName;
+
+    $.ajax({
+        url: 'processSignUp.aspx',
+        type: "POST",
+        data: qString,
+        success: function(r) {           
+        }    
+    });
+    return false;
+});
+
+//Using the jQuery.serialize method
+$("form").submit(function(){
+    var qString = $(this).serialize();
+    alert(qString);
+    $.ajax({
+        url: 'processSignUp.aspx',
+        type: "POST",
+        data: qString,
+        success: function(r) {
+        }
+    });
+    return false;
+});
+
+
+
